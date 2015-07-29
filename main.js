@@ -33,8 +33,6 @@ define(function (require, exports, module) {
     var FileSystem  = brackets.getModule('filesystem/FileSystem');
     var _oldFilter = FileSystem._FileSystem.prototype._indexFilter;
 
-    var regex = new RegExp(prefs.get('filter'));
-
     FileSystem._FileSystem.prototype._indexFilter = function (path, name) {
         // Call old filter
         var result = _oldFilter.apply(this, arguments);
@@ -43,6 +41,6 @@ define(function (require, exports, module) {
             return false;
         }
 
-        return !name.match(regex);
+        return !name.match(new RegExp(prefs.get('filter')));
     };
 });
