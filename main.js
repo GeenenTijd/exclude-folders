@@ -26,7 +26,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var PreferencesManager = require('preferences/PreferencesManager');
+    var PreferencesManager = brackets.getModule('preferences/PreferencesManager');
     var prefs = PreferencesManager.getExtensionPrefs('exclude-folders');
     prefs.definePreference('filter', 'string', 'node_modules|bower_components');
 
